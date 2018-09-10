@@ -1,28 +1,30 @@
  // Initial array of gifs
  var gifButtons = ["Elephant", "Penguin", "Giraffe", "Lion", "Tiger", "Panda", "Gorilla", "Monkey", "Rhino", "Otter"];
 
+ //empty variable to store our new gif to be pushed to array
  var newGif;
 
+ //put the gifs on the page
  function renderGifs() {
+     //take the gif term we want to pull in
      var gif = $(this).attr("value");
 
      var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
          gif + "&api_key=dc6zaTOxFJmzC&limit=10";
 
+     //pull in the data
      $.ajax({
          url: queryURL,
          method: 'GET'
      }).then(function (response) {
-
+         //make the container/assign attributes needed/append to view
          var results = response.data;
-
-         console.log(results)
 
          for (var i = 0; i < results.length; i++) {
 
              var gifDiv = $("<div>")
 
-             var p = $("<p>").text("Rating: " + results[i].rating)
+             var p = $("<p>").text("Rating: " + results[i].rating).addClass("rating")
 
              var gifImage = $('<img>')
 
@@ -40,11 +42,11 @@
      })
  }
 
-
- // This function handles events where one button is clicked
+ //on the click of the add new button
  $("#add-gif").on("click", function (event) {
      event.preventDefault()
 
+     //take the value of the input/assign to array/re-render the buttons
      newGif = $("#gif-input").val()
 
      console.log(newGif)
@@ -54,12 +56,13 @@
      renderButtons()
  });
 
+ //to render the buttons on the page - needs to run initially as well
+ function renderButtons() {
 
- // Function for displaying movie data
- function renderButtons(newGif) {
+     //empty the view so we don't have duplicates
+     $("#gifs-buttons").empty()
 
-     $("#gifs-view").empty()
-
+     //loop through the array and assign attributes and classes as needed
      for (var i = 0; i < gifButtons.length; i++) {
 
          $('<input>').attr({
@@ -70,14 +73,13 @@
      }
  }
 
-
- //PAUSE
+ //change the state of the gifs when clicked
  function changeState() {
 
-     console.log("clicked")
-
+     //assign the inital state of the gif
      var state = $(this).attr("datastate")
 
+     //if the image isnt moving, animate it / else un-animate it
      if (state === "still") {
          var animateSRC = $(this).attr("dataanimate")
          $(this).attr("src", animateSRC)
@@ -91,10 +93,10 @@
      }
  };
 
-
+ //global event listeners so that they will work after functions run each time
  $(document).on("click", ".gifs", renderGifs)
 
  $(document).on("click", ".gifsA", changeState)
 
- // Calling the renderButtons function to display the initial list of gifs
- renderButtons();
+ //inital call to render the default buttons on screen
+ renderButtons()

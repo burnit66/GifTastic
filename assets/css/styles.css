@@ -1,0 +1,47 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.container{
+    max-width: 1040px;
+    margin: 0 auto;
+}
+
+.heading{
+    text-align: center; 
+}
+
+#gif-form{
+    padding-bottom:20px;
+}
+
+label{
+    font-size: 18px;
+}
+
+input[type="submit"]{
+    color: #fff;
+    background-color: #2480fe;
+    padding: 8px 18px;
+    border-radius: 3px;
+    border: none;
+    margin: 0px 5px 10px 5px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+input[type="submit"]:hover{
+    opacity: .8;
+}
+
+input[type="text"]{
+    font-size: 16px;
+    color: rgb(112, 112, 112);
+}
+
+.rating{
+    color: red;
+    padding-top: 20px;
+}
