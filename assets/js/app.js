@@ -1,16 +1,20 @@
  // Initial array of gifs
- var gifButtons = ["Elephant", "Penguin", "Giraffe", "Lion", "Tiger", "Panda", "Gorilla", "Monkey", "Rhino", "Otter"];
+ var gifButtons = ["Elephant", "Penguin", "Giraffe", "Lion", "Tiger", "Panda", "Gorilla", "Monkey", "Rhino", "Otter"]
 
  //empty variable to store our new gif to be pushed to array
- var newGif;
+ var newGif
 
  //put the gifs on the page
  function renderGifs() {
      //take the gif term we want to pull in
-     var gif = $(this).attr("value");
+     var gif = $(this).attr("value")
+
+     var limit = $("#number").val()
+
+     console.log(limit)
 
      var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-         gif + "&api_key=dc6zaTOxFJmzC&limit=10";
+         gif + "&api_key=dc6zaTOxFJmzC&limit=" + limit
 
      //pull in the data
      $.ajax({
@@ -23,6 +27,8 @@
          for (var i = 0; i < results.length; i++) {
 
              var gifDiv = $("<div>")
+
+             gifDiv.addClass("gifDiv")
 
              var p = $("<p>").text("Rating: " + results[i].rating).addClass("rating")
 
