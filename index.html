@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +9,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>GifTastic</title>
 </head>
+
 <body>
     <div>
+        <div class="container">
+            <h1>GifTastic</h1>
 
-    </div>
+            <form id="movie-form">
+                <label for="gif-input">Add a new GIF</label>
+                <input type="text" id="gif-input">
+                <br>
 
-    <script src="assets/js/app.js"></script>
+                <input id="add-gif" type="submit" value="Add a new GIF">
+            </form>
+            <div id="gifs-buttons"></div>
+
+            <div id="gifs-view"></div>
+        </div>
+
+        <script src="assets/js/app.js"></script>
 </body>
+
 </html>
